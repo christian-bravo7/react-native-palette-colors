@@ -7,6 +7,7 @@ import {
   Platform,
   StatusBar,
 } from 'react-native';
+import ColorBox from './components/ColorBox';
 
 const App = () => {
   return (
@@ -15,18 +16,10 @@ const App = () => {
         <Text style={styles.title}>
           Here are some boxes of different colors
         </Text>
-        <View style={[styles.box, styles.cyan]}>
-          <Text style={styles.boxText}>Cyan #2aa198</Text>
-        </View>
-        <View style={[styles.box, styles.blue]}>
-          <Text style={styles.boxText}>Blue #268bd2</Text>
-        </View>
-        <View style={[styles.box, styles.magenta]}>
-          <Text style={styles.boxText}>Magenta #d33682</Text>
-        </View>
-        <View style={[styles.box, styles.orange]}>
-          <Text style={styles.boxText}>Orange #cb4b16</Text>
-        </View>
+        <ColorBox colorName="Cyan" colorHex="#2aa198" />
+        <ColorBox colorName="Blue" colorHex="#268bd2" />
+        <ColorBox colorName="Magenta" colorHex="#d33682" />
+        <ColorBox colorName="Orange" colorHex="#cb4b16" />
       </View>
     </SafeAreaView>
   );
@@ -46,27 +39,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     marginBottom: 12,
-  },
-  box: {
-    padding: 20,
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  boxText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  cyan: {
-    backgroundColor: '#2aa198',
-  },
-  blue: {
-    backgroundColor: '#268bd2',
-  },
-  magenta: {
-    backgroundColor: '#d33682',
-  },
-  orange: {
-    backgroundColor: '#cb4b16',
   },
 });
 
