@@ -1,5 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, View, RefreshControl } from 'react-native';
+import {
+  FlatList,
+  View,
+  RefreshControl,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import PalettePreviewNavigation from '../components/PalettePreviewNavigation';
 
 const endpoint = 'https://color-palette-api.kadikraman.now.sh/palettes';
@@ -40,6 +46,15 @@ const Home = ({ navigation }) => {
           )}
           refreshing={refreshing}
           onRefresh={handleRefresh}
+          ListHeaderComponent={
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('ColorPaletteModal');
+              }}
+            >
+              <Text>Open Modal</Text>
+            </TouchableOpacity>
+          }
         />
       </View>
     )
