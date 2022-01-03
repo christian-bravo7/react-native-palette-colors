@@ -1,18 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  FlatList,
-  View,
-  RefreshControl,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import { FlatList, View } from 'react-native';
+import AddNewPaletteButton from '../components/AddNewPaletteButton';
 import PalettePreviewNavigation from '../components/PalettePreviewNavigation';
 
 const endpoint = 'https://color-palette-api.kadikraman.now.sh/palettes';
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
   const [palettes, setPalettes] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+  const newPalette = route.params?.newPalette;
 
   const fetchColorPalettes = useCallback(async () => {
     const response = await fetch(endpoint);
@@ -30,6 +26,12 @@ const Home = ({ navigation }) => {
     fetchColorPalettes();
   }, [fetchColorPalettes]);
 
+  useEffect(() => {
+    if (newPalette) {
+      setPalettes((prevPalettes) => [newPalette, ...prevPalettes]);
+    }
+  }, [newPalette]);
+
   return (
     palettes.length > 0 && (
       <View>
@@ -46,15 +48,7 @@ const Home = ({ navigation }) => {
           )}
           refreshing={refreshing}
           onRefresh={handleRefresh}
-          ListHeaderComponent={
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ColorPaletteModal');
-              }}
-            >
-              <Text>Open Modal</Text>
-            </TouchableOpacity>
-          }
+          ListHeaderComponent={<AddNewPaletteButton />}
         />
       </View>
     )

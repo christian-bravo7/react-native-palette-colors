@@ -15,15 +15,13 @@ const ColorPalette = ({ route }) => {
   } = route;
 
   return (
-    <SafeAreaView style={[styles.safeArea, styles.androidSafeArea]}>
+    <SafeAreaView style={[styles.safeArea]}>
       <FlatList
-        style={StyleSheet.colorList}
         data={colors}
         keyExtractor={({ colorName }) => colorName}
         renderItem={({ item }) => (
           <ColorBox colorName={item.colorName} colorHex={item.hexCode} />
         )}
-        ListHeaderComponent={() => <Text style={styles.title}>{title}</Text>}
       />
     </SafeAreaView>
   );
@@ -32,6 +30,7 @@ const ColorPalette = ({ route }) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    padding: 12,
   },
   androidSafeArea: {
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
@@ -42,7 +41,8 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 24,
-    marginBottom: 12,
+    marginBottom: 6,
+    padding: 12,
   },
 });
 

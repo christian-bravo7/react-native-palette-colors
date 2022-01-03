@@ -19,7 +19,6 @@ const PalettePreviewNavigation = ({ colors, title, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 12,
     padding: 12,
   },
 });

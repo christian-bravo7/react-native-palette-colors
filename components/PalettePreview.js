@@ -19,6 +19,8 @@ const PalettePreview = ({ title, colors }) => {
 const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 10,
   },
 });
 

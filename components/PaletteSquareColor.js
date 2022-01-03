@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   colorSquare: {
     width: 50,
     height: 50,
+    marginRight: 6,
   },
 });
 
